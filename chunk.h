@@ -6,6 +6,11 @@
 
 typedef enum{
     OP_CONSTANT, //loads the constant for use
+    OP_ADD,
+    OP_SUBTRACT,
+    OP_MULTIPLY,
+    OP_DIVIDE,
+    OP_NEGATE, //negate value
     OP_RETURN, //return from the current function
 } OpCode;
 
