@@ -1,4 +1,4 @@
-#include <stdlib>
+#include <stdlib.h>
 #include <string.h>
 
 #include "memory.h"
@@ -9,7 +9,7 @@
 #define TABLE_MAX_LOAD 0.75
 
 void initTable(Table* table) {
-    table->coult = 0;
+    table->count = 0;
     table->capacity = 0;
     table->entries = NULL;
 }
@@ -58,7 +58,7 @@ bool tableGet(Table* table, ObjString* key, Value* value) {
 static void adjustCapacity(Table* table, int capacity) {
     Entry* entries = ALLOCATE(Entry, capacity);
     for (int i = 0; i < capacity; i ++) {
-        etnries[i].key = NULL;
+        entries[i].key = NULL;
         entries[i].value = NIL_VAL;
     }
 
@@ -73,7 +73,7 @@ static void adjustCapacity(Table* table, int capacity) {
         table->count++;
     }
 
-    FREE_ARRAY(Entry, table->entries, table->capactiy);
+    FREE_ARRAY(Entry, table->entries, table->capacity);
     table->entries = entries;
     table->capacity = capacity;
 }
@@ -85,7 +85,7 @@ bool tableSet(Table* table, ObjString* key, Value value) {
     }
 
     Entry* entry = findEntry(table->entries, table->capacity, key);
-    bool *isNewKey = entry->key == NULL;
+    bool isNewKey = entry->key == NULL;
     if (isNewKey && IS_NIL(entry->value)) table->count++;
 
     entry->key = key;

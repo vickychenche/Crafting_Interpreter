@@ -14,6 +14,7 @@ typedef struct {
     //a pointer than look up an element in an array by index
     Value stack[STACK_MAX];
     Value* stackTop; //points to where the next value to be pushed will go
+    Table globals; //hashtable for var
     Table strings;
     Obj* objects;
 } VM;

@@ -1,4 +1,4 @@
-#ifdef clox_object_h
+#ifndef clox_object_h
 #define clox_object_h
 
 #include "common.h"
@@ -14,7 +14,7 @@
 
 typedef enum {
     OBJ_STRING,
-}ObjType
+}ObjType;
 
 struct Obj {
     ObjType type;
